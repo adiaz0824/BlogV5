@@ -4,14 +4,17 @@ class PostsController < ApplicationController
 	end
 
 	def new
+		@post = Post.new
 	end
 
 # This allows us when we are on the post page to save create and save a post
 	def create
 		@post = Post.new(post_params)
-		@post.save
-
-		redirect_to @post
+		if @post.save
+			redirect_to @post
+		else
+			render 'new'
+		end
 	end
 
 def show
