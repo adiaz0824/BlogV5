@@ -3,12 +3,54 @@
 <head>
   <title>P2blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<!-- Creates the div's for the side bar which contains the logo -->
+<div id="sidebar">
+<div id="logo">
+	<%= link_to root_path do %>
+		<%= image_tag "Megacat.jpg"%>
+		<% end %>
+</div>
+
+<!-- Creates a link to the home page of the blog -->
+	<ul>
+		<li class="category"> Website</li>
+		<li><%= link_to "Blog", root_path %></li>
+		<li>About</li>
+	</ul>
+<!-- Creates social media links -->
+	<ul>
+		<li class="category">Social Media</li>
+		<li><a href="twitter link">Twitter</a></li>
+		<li><a href="instagram link">Instrgram</a></li>
+		<li><a href="facebook link">Facebook</a></li>
+		<li><a href="github link">GitHub</a></li>
+	</ul>
+<!-- Create a p tag for a Admin Login -->
+	<p class="sign_in">Admin Login</p>	
+</div>
+
+<div id="main_content">
+	<div id="header">
+		<p>All Posts</p>
+		<div class="buttons">
+			<button class="button"><%= link_to "New Post", new_post_path %></button>
+			<button class="button">Log Out</button>
+		</div>
+	</div>
+
+	<% flash.each do |name, msg| %>
+		<%= content_tag(:div, msg, class: "alert") %>
+	<% end %>	
+
 <%= yield %>
+</div>
+
 
 </body>
 </html>
