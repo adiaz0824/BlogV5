@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-resources :posts do 
-  resources :comments
- end
+  
+  delete '/sessions' => 'sessions#destroy', as: 'logout'
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :users, only: [:index, :new, :create, :show]
+
+  resources :posts do 
+    resources :comments
+   end
   
 root "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.
