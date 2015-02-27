@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+
+# // =================================================================================
+# Shout out to K. Curbelo for User Authentication markup
+# // =================================================================================
+
   def new
     @user = User.new
   end
